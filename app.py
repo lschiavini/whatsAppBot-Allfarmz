@@ -15,7 +15,32 @@ def sms_reply():
 
     # Create reply
     resp = MessagingResponse()
-    resp.message("You said: {}".format(msg))
+    handler(resp, msg)
+
+
+def handler(resp, msg):
+    text = format(msg)
+    if text == "Hola":
+        handlingHello(resp)
+    elif text == "Products":
+        handlingProducts(resp)
+    else:
+        resp.message("You said: {}".format(msg))
+        return str(resp)
+
+def handlingHello(resp):
+    resp.message("Hola que tal")
+    return str(resp)
+
+
+def handlingProducts(resp):
+    resp.message("Products:\n" + 
+                "1 - aaaaaaaa\n" + 
+                "2 - aaaaaaaa\n" + 
+                "3 - aaaaaaaa\n" + 
+                "4 - aaaaaaaa\n" + 
+                "5 - aaaaaaaa\n" 
+    )
 
     return str(resp)
 
